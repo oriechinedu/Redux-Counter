@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk'
 import Counter from './components/Counter';
 import counter from './reducers';
 
@@ -10,7 +11,7 @@ import counter from './reducers';
 // that is responsible for updating the store, along
 // with any initial state that we may want the store
 // to start out with (which is none in this case).
-const store = createStore(counter);
+const store = createStore(counter, applyMiddleware(thunk));
 
 // Here, we wrap our main React component inside of
 // Provider tags, which come from the react-redux package.
